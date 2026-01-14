@@ -11,7 +11,8 @@ function Parent() {
     <>
       <h1 className="text-3xl">부모 컴포넌트</h1>
       <div style={style}>
-        <Child name={name} color={'red'} />
+        <Child name={name} color={'red'} age={15} />
+        <Child name={name} color={'blue'} />
       </div>
     </>
   );
