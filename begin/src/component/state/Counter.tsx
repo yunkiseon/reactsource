@@ -8,6 +8,13 @@ function Counter() {
   const [count, setCount] = useState(0);
   const increase = () => setCount(count + 1);
   const decrease = () => setCount(count - 1);
+
+  let num = 0;
+  const increment = () => {
+    num += 1;
+    console.log(num);
+  };
+
   return (
     <>
       <div>
@@ -17,6 +24,11 @@ function Counter() {
         </button>
         <button className="bg-red-500 p-4" onClick={decrease}>
           -1
+        </button>
+        {/* num의 화면 변화x / 이벤트는 일어남 */}
+        <h2>{num}</h2>
+        <button className="bg-red-500 p-4" onClick={increment}>
+          숫자변경
         </button>
       </div>
     </>
