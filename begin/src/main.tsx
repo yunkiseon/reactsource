@@ -4,7 +4,7 @@ import './index.css';
 import App from './App.tsx';
 import Book from './component/Book.tsx';
 import MyApp from './component/MyApp.tsx';
-import Parent from './component/props/Parent.tsx';
+import Parent from './component/memo/Parent.tsx';
 import CardApp from './component/props/CardApp.tsx';
 import Products from './component/props/Products.tsx';
 import ParentCardLayout from './component/children/ParentCardLayout.tsx';
@@ -28,6 +28,9 @@ import LifeCycle from './component/effect/LifeCycle.tsx';
 import LifeCycle2 from './component/effect/LifeCycle2.tsx';
 import BookApp from './component/effect/BookApp.tsx';
 import TaskApp from './component/state/TaskApp.tsx';
+import UserApp from './component/reducer/UserApp.tsx';
+import UserApp2 from './component/reducer/UserApp2.tsx';
+import Memo from './component/memo/Memo.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <>
@@ -50,6 +53,9 @@ createRoot(document.getElementById('root')!).render(
     {/* <UserForm /> */}
     {/* <LifeCycle2 /> */}
     {/* <BookApp /> */}
-    <TaskApp />
+    {/* <TaskApp /> */}
+    {/* <UserApp2 /> */}
+    {/* <Memo /> */}
+    <Parent />
   </>,
 );

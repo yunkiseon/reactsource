@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
+import type { TaskItem, TaskList } from '../types/task';
 
-function TaskItem({ task, onDeleteTask, onChangeTask }) {
+function TaskItem({ task, onDeleteTask, onChangeTask }: TaskItem) {
   const [isDone, setIsDone] = useState(task.done);
   const [isEdit, setIsEdit] = useState(false);
+  const [text, setText] = useState(task.text);
   // task.done true 면 체크박스 체크된 걸로
 
   const CheckboxIcon = isDone ? MdCheckBox : MdCheckBoxOutlineBlank;
@@ -15,6 +17,15 @@ function TaskItem({ task, onDeleteTask, onChangeTask }) {
       done: !isDone,
     });
   };
+  const taskTextChange = () => {
+    // 기존 text 변경
+    onChangeTask({
+      ...task,
+      text: text,
+    });
+    // 원래대로 span으로 변경, edit 버튼으로 변경
+    setIsEdit(false);
+  };
   return (
     <>
       <div className="flex items-center justify-between px-3 py-2">
@@ -25,6 +36,8 @@ function TaskItem({ task, onDeleteTask, onChangeTask }) {
               type="text"
               className="w-full border p-3"
               placeholder="할 일을 입력하세요"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
             />
           ) : (
             <span className="flex items-center gap-2">{task.text}</span>
@@ -35,6 +48,7 @@ function TaskItem({ task, onDeleteTask, onChangeTask }) {
             <button
               type="button"
               className="rounded border px-4 py-2 text-sm text-green-600"
+              onClick={taskTextChange}
             >
               Save
             </button>
@@ -42,6 +56,7 @@ function TaskItem({ task, onDeleteTask, onChangeTask }) {
             <button
               type="button"
               className="rounded border px-4 py-2 text-sm text-green-600"
+              onClick={() => setIsEdit(true)}
             >
               Edit
             </button>
@@ -60,7 +75,7 @@ function TaskItem({ task, onDeleteTask, onChangeTask }) {
   );
 }
 
-function ListTask({ tasks, onDeleteTask, onChangeTask }) {
+function ListTask({ tasks, onDeleteTask, onChangeTask }: TaskList) {
   return (
     <>
       {tasks.map((task) => (

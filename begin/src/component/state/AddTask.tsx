@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-function AddTask(onAddTask) {
+function AddTask({ onAddTask }: { onAddTask: (text: string) => void }) {
   const [text, setText] = useState('');
+
   return (
     <>
       <div className="flex gap-2">
