@@ -1,11 +1,11 @@
-import type { Todos } from '../types/todo';
 import TodoListItem from './TodoListItem';
+import TodoListItem2 from './TodoListItem2';
 
-const TodoList = ({ todos, onDeleteTodo, onChangeTodo }: Todos) => {
+const TodoList2 = ({ todos, onDeleteTodo, onChangeTodo }) => {
   return (
     <div>
       {todos.map((todo) => (
-        <TodoListItem
+        <TodoListItem2
           todo={todo}
           key={todo.id}
           onDeleteTodo={onDeleteTodo}
@@ -16,4 +16,4 @@ const TodoList = ({ todos, onDeleteTodo, onChangeTodo }: Todos) => {
   );
 };
 
-export default TodoList;
+export default TodoList2;
