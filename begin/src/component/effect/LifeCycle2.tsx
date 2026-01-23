@@ -9,7 +9,9 @@ function LifeCycle2() {
     // 서버로부터 정보를 받아올 때 달라짐
     //
   }, [count1]);
+  const handleClick = () => {};
   console.log('-----Rendering-----');
+  // 렌더링과 새로고침은 근본적으로 다르다
   return (
     <>
       <div className="mx-3 mt-10 flex p-3">

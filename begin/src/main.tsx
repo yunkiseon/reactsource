@@ -51,11 +51,11 @@ createRoot(document.getElementById('root')!).render(
     {/* <Toolbar /> */}
     {/* <Signup2 /> */}
     {/* <UserForm /> */}
-    {/* <LifeCycle2 /> */}
+    <LifeCycle2 />
     {/* <BookApp /> */}
     {/* <TaskApp /> */}
     {/* <UserApp2 /> */}
     {/* <Memo /> */}
-    <Parent />
+    {/* <Parent /> */}
   </>,
 );
