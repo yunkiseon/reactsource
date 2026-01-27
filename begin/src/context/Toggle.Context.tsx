@@ -2,8 +2,8 @@ import { createContext, useState, type ReactNode } from 'react';
 
 type ToggleContextValue = {
   isOn: boolean;
-  setIsOn: React.Dispatch<React.SetStateAction<boolean>>;
-  toggle: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOn?: React.Dispatch<React.SetStateAction<boolean>>;
+  toggle: () => void;
 };
 
 const ToggleContext = createContext<ToggleContextValue | null>(null);
