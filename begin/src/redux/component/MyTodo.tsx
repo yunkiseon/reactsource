@@ -1,13 +1,15 @@
-import { SiTodoist } from 'react-icons/si';
-import Counter from './Counter';
+import CounterContainer from '../container/CounterContainer';
+import TodosContainer from '../container/TodosContainer';
+
+import Todos from './Todos';
 
 function MyTodo() {
   return (
     <>
       <div className="flex flex-col items-center">
-        <Counter />
+        <CounterContainer />
         <hr />
-        <SiTodoist />
+        <TodosContainer />
       </div>
     </>
   );

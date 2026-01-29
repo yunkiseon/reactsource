@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import '../../App.css';
 
-// 한번에 처리
 function InputMultiSample2() {
   const [inputs, setInputs] = useState<{ name: string; nickname: string }>({
     name: '',
@@ -12,11 +11,13 @@ function InputMultiSample2() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
+
     setInputs({
-      ...inputs, //
+      ...inputs,
       [name]: value,
     });
   };
+
   return (
     <>
       <input
@@ -48,7 +49,7 @@ function InputMultiSample2() {
       </button>
       <div>
         <b>
-          입력값 : {name} : {nickname}
+          입력값 : {name} : ({nickname})
         </b>
       </div>
     </>

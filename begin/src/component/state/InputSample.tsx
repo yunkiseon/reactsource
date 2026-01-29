@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import '../../App.css';
 
-function InputSample() {
+export default function InputSample() {
   const [text, setText] = useState<string>('');
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setText(e.target.value);
+
   return (
     <>
       <input
         type="text"
         name=""
-        id=""
         onChange={handleChange}
         value={text}
         className="border-2 p-1.5"
@@ -19,10 +20,10 @@ function InputSample() {
         초기화
       </button>
       <div>
-        <b>현재값 : {text} </b>
+        <b>현재값 : {text}</b>
       </div>
     </>
   );
 }
 
-export default InputSample;
+//export default InputSample;

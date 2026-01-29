@@ -1,11 +1,14 @@
 import type { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
 
 function BasicLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="bg-gray-200">
+    <>
+      <div className="bg-gray-200">
+        <Navbar />
+      </div>
       <div>{children}</div>
-    </div>
+    </>
   );
 }
 

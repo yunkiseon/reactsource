@@ -15,21 +15,22 @@ export const initialUser: UserType = {
 
 function UserApp2() {
   // const [user, setUser] = useState(initialUser);
-  // useReducer(리듀서함수, 초기값)
+  // useReducer(리듀서함수, 초기값);
   const [user, dispatch] = useReducer(userReducer, initialUser);
 
   const { name, year, warning } = user;
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    //이름 - 소문자로 변경 후 보여주기
+
+    // 이름(소문자로 변경 후 보여주기)
     if (name === 'name') {
       dispatch({
         type: 'SET_NAME',
         name: value,
       });
-      // 나이 성인여부 판별해서 18세 이하면 경고 메세지
     } else {
+      // 나이(성인여부 판별 18세 이하면 경고 메세지)
       dispatch({
         type: 'SET_YEAR',
         year: Number(value),
@@ -45,43 +46,43 @@ function UserApp2() {
 
   return (
     <div className="mt-10 flex flex-col items-center px-3 py-2">
-      <div className="flex w-full items-center gap-3"></div>
-      <div>
-        <input
-          type="text"
-          name="name"
-          className="flex-1 rounded border px-3 py-2"
-          placeholder="Enter name"
-          onChange={handleChange}
-          value={name}
-        />
-      </div>
-      <div>
-        <input
-          type="number"
-          name="year"
-          className="flex-1 rounded border px-3 py-2"
-          placeholder="Enter birth year"
-          onChange={handleChange}
-          value={year}
-        />
-      </div>
-
-      <button
-        type="button"
-        className="py-w rounded bg-orange-500 px-4 text-white"
-        onClick={onReset}
-      >
-        reset
-      </button>
-      <div>
-        <ul>
-          <li>Name : {name} </li>
-          <li>
-            Year : {year} {''}
-            {warning && <span className="text-red-500">{warning}</span>}
-          </li>
-        </ul>
+      <div className="flex w-full items-center gap-3">
+        <div>
+          <input
+            type="text"
+            name="name"
+            className="flex-1 rounded border px-3 py-2"
+            placeholder="Enter name"
+            onChange={handleChange}
+            value={name}
+          />
+        </div>
+        <div>
+          <input
+            type="number"
+            name="year"
+            className="flex-1 rounded border px-3 py-2"
+            placeholder="Enter birth year"
+            onChange={handleChange}
+            value={year}
+          />
+        </div>
+        <button
+          type="button"
+          onClick={onReset}
+          className="py-w rounded bg-orange-500 px-4 text-white"
+        >
+          reset
+        </button>
+        <div>
+          <ul>
+            <li>Name : {name}</li>
+            <li>
+              Year : {year}{' '}
+              {warning && <span className="text-red-500">{warning}</span>}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

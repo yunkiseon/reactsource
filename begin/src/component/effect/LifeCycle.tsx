@@ -2,16 +2,18 @@ import { useEffect, useState } from 'react';
 
 function LifeCycle() {
   const [selected, setSelected] = useState('');
+
   useEffect(() => {
-    console.log('1. Mouted');
-    return () => console.log('3. Unmonted');
-    // selected 가 있으면 unmount, mount 일어나지만 없으면 일어나지 않음
-    // 즉 아래 []에 넣는 것은 mount가 일어날 시점을 넣는 것이다.
+    console.log('1. Mounted / 2. Updated');
+
+    return () => console.log('3. Unmounted');
   }, [selected]);
-  console.log('-----Rendering-----');
+
+  console.log('--- Rendering ---');
+
   return (
     <>
-      <div className="lfex p03 mx-3 mt-10">
+      <div className="mx-3 mt-10 flex p-3">
         {['', 'ClassComp', 'FuncComp'].map((option) => (
           <label htmlFor="" className="p-3" key={option}>
             <input

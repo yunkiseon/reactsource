@@ -1,6 +1,5 @@
 function Array() {
   // type or interface
-
   interface User {
     name: string;
     email: string;
@@ -12,10 +11,18 @@ function Array() {
   };
   const colors: string[] = ['red', 'blue', 'green'];
   const numbers: number[] = [1, 2, 3, 4, 5];
+
+  // type
   type Item = {
     id: number;
     price: number;
   };
+
+  //   const items: { id: number; price: number }[] = [
+  //     { id: 1, price: 10 },
+  //     { id: 2, price: 20 },
+  //   ];
+
   const items: Item[] = [
     { id: 1, price: 10 },
     { id: 2, price: 20 },
@@ -46,8 +53,8 @@ function Array() {
         ))}
       </ul>
       {/* filter 적용 : 짝수 출력 */}
-      <p>{numbers.filter((n) => n % 2 === 0).join(',')}</p>
-      <p>{numbers.filter((n) => n * 2).join(',')}</p>
+      <p>{numbers.filter((n) => n % 2 === 0).join(', ')}</p>
+      <p>{numbers.map((n) => n * 2).join(', ')}</p>
     </>
   );
 }

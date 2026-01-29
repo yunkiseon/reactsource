@@ -10,24 +10,43 @@ type Book = {
 function BookApp() {
   const [books, setBooks] = useState<Book[]>([]);
 
-  // fetch() : 브라우저 함수여서 설치 필요 없음
-  // axios() : node.js 환경에선 설치/ 타임리프등에선 <script src=""><script>
-  // await : await 은 async 함수에서만 사용 가능
+  // fetch() : 브라우저 함수(설치 필요 없음)
+  // axios() : nodejs 환경에서는 설치 / cdn 방식 <script src=""></script>
 
-  // 비동기식 코드를 동기식처럼 보이게하기. 동기식이 되는 것은 아니지만 그렇게 보이게 가능
-  //
+  // fetch(경로, {headers, data}).then(데이터도착여부 / 도착 데이터만 원하는 형식으로 변환).then(변환된 데이터 화면처리).catch(에러).finally(무조건실행)
+
+  // 비동기식 작업을 동기식 코드처럼 보이도록 만들기
+
+  //   useEffect(() => {
+  //     const fetchBooks = async () => {
+  //       try {
+  //         const res = await fetch('/data/books.json');
+
+  //         if (!res.ok) {
+  //           throw new Error('네트워크 or 서버 확인');
+  //         }
+
+  //         const data = await res.json();
+  //         setBooks(data);
+  //       } catch (error) {
+  //         console.error('Failed ', error);
+  //       }
+  //     };
+  //     fetchBooks();
+  //   }, []); // [] : 한번만 실행
+
   useEffect(() => {
     const fetchBooks = async () => {
       try {
         const res = await axios.get('/data/books.json');
-        //axios는 자동으로 json 파싱을 해줌
+        // axios 는 자동으로 json 파싱
         setBooks(res.data);
       } catch (error) {
-        console.error('Failed', error);
+        console.error('Failed ', error);
       }
     };
     fetchBooks();
-  }, []); // [] : 시기를 안정해놓으면 한 번ㅁ나 실행함
+  }, []);
 
   return (
     <>

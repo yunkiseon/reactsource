@@ -7,11 +7,13 @@ const cards: Card[] = [
     author: 'Alice',
   },
   {
-    title: 'React Compsition',
+    title: 'React Composition',
     content: 'Props pass data from one component to another.',
     author: 'Charlie',
   },
-  { content: 'Props pass data from one component to auother' },
+  {
+    content: 'Props pass data from one component to another.',
+  },
 ];
 
 function CardApp() {

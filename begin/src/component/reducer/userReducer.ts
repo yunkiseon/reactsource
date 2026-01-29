@@ -1,13 +1,12 @@
-// useReduce()
+// useReducer()
 
 import { initialUser, type UserType } from './UserApp2';
 
 // set~~ 작업 : action 선언
-// 일반적으로 state, action 을 많이 씀
+
 // SET_NAME : 이름 소문자로 변경
 // SET_YEAR : YEAR
-// RESET
-
+// RESET :
 type UserAction =
   | {
       type: 'SET_NAME';
@@ -21,7 +20,7 @@ type UserAction =
       type: 'RESET';
     };
 
-export function userReducer(user: UserType, action: UserAction): UserType {
+export function userReducer(user: UserType, action: UserAction) {
   switch (action.type) {
     case 'SET_NAME':
       return {
@@ -34,7 +33,7 @@ export function userReducer(user: UserType, action: UserAction): UserType {
         return {
           ...user,
           year: action.year,
-          warning: '최소 나이는 18세여야 합니다',
+          warning: '최소 나이는 18세여야 합니다.',
         };
       } else {
         return {
@@ -43,11 +42,9 @@ export function userReducer(user: UserType, action: UserAction): UserType {
           warning: '',
         };
       }
-
     case 'RESET':
       return initialUser;
-
     default:
-      throw new Error('Unknown action');
+      throw new Error('Unknown action type');
   }
 }

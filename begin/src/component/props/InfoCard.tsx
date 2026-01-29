@@ -12,19 +12,20 @@ export interface Card {
 //       <div className={styles.card}>
 //         <h2>{props.title}</h2>
 //         <p>{props.content}</p>
-//         <p>{props.author}</p>
+//         <p>Author : {props.author}</p>
 //       </div>
 //     </>
 //   );
 // }
-// 구조 분해한 버전이 아래
+
+// 구조분해
 function InfoCard({ title, content, author }: Card) {
   return (
     <>
       <div className={styles.card}>
         <h2>{title}</h2>
         <p>{content}</p>
-        <p>{author}</p>
+        <p>Author : {author}</p>
       </div>
     </>
   );

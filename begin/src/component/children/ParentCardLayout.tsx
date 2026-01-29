@@ -6,11 +6,15 @@ function ParentCardLayout() {
       <CardLayout>
         <p>Props of Components</p>
       </CardLayout>
+
       <CardLayout title={'Details'}>
-        <p>Featrure A</p>
-        <p>Featrure B</p>
-        <p>Featrure C</p>
+        <ul>
+          <li>Feature A</li>
+          <li>Feature B</li>
+          <li>Feature C</li>
+        </ul>
       </CardLayout>
+
       <CardLayout title={'Contact'}>
         <p>Email : example@example.com</p>
         <p>phone : 123-456-7890</p>

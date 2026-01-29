@@ -1,21 +1,18 @@
 import { useState } from 'react';
 import { useAuth } from './useAuth';
-import type { LoginState } from './AuthContext';
+import { type LoginState } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
   // 로그인 클릭 시 Context value 변경
   const { login, isLoggedIn } = useAuth();
-
   const navigate = useNavigate();
 
-  // 상태관리를 위한 useState
   const [form, setForm] = useState<LoginState>({
     id: '',
     password: '',
   });
 
-  // 그 form 안에 있는 id, passowrd 분해
   const { id, password } = form;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -33,10 +30,10 @@ function Login() {
       [name]: value,
     });
   };
-  if (isLoggedIn) {
-    return <p>이미 로그인 되었습니다.</p>;
-  }
 
+  if (isLoggedIn) {
+    return <p>이미 로그인되었습니다.</p>;
+  }
   return (
     <>
       <h1 className="text-3xl">Login</h1>

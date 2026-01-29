@@ -1,17 +1,17 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import BasicLayout from './BasicLayout';
 
 function Account() {
   return (
     <BasicLayout>
       <nav className="flex h-20 items-center p-3">
-        {/* 메뉴 선택 시 active => 자동으로 판별 */}
-        <NavLink to={'login'} className={'basis-3xl'}>
+        {/* 메뉴 선택 시 active => 자동으로 판별함(현재 URL 과 일치여부) */}
+        <NavLink to={'login'} className="basis-3xs">
           {({ isActive }) => (
             <span
               className={
                 isActive
-                  ? 'border-blue-600 px-4 py-2 font-semibold text-blue-600'
+                  ? 'border-b-2 border-blue-600 px-4 py-2 font-semibold text-blue-600'
                   : ''
               }
             >
@@ -19,12 +19,12 @@ function Account() {
             </span>
           )}
         </NavLink>
-        <NavLink to={'register'} className={'basis-3xl'}>
+        <NavLink to={'register'} className="basis-3xs">
           {({ isActive }) => (
             <span
               className={
                 isActive
-                  ? 'border-blue-600 px-4 py-2 font-semibold text-blue-600'
+                  ? 'border-b-2 border-blue-600 px-4 py-2 font-semibold text-blue-600'
                   : ''
               }
             >
@@ -32,8 +32,8 @@ function Account() {
             </span>
           )}
         </NavLink>
-        {/* 자식 컴포넌트 자리 */}
       </nav>
+      {/* 자식 컴포넌트 자리 */}
       <Outlet />
     </BasicLayout>
   );

@@ -2,9 +2,8 @@ import Child4 from './Child4';
 import { useToggle } from './useToggle';
 
 function Child3() {
-  // const context = useToggle();
-  // const {isOn} = context; 아래와 동일
   const { isOn } = useToggle();
+
   return (
     <>
       <h2>Child3</h2>

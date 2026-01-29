@@ -1,11 +1,11 @@
-import type { Task, TaskList } from '../types/task';
+import type { Task } from '../../types/task';
 
 type TaskAction =
   | { type: 'ADD'; id: number; text: string; done: boolean }
   | { type: 'CHANGE'; task: Task }
   | { type: 'DELETE'; id: number };
 
-export function taskReducer(tasks: Task[], action: TaskAction): Task[] {
+export function taskReducer(tasks: Task[], action: TaskAction) {
   switch (action.type) {
     case 'ADD':
       return [
@@ -16,7 +16,6 @@ export function taskReducer(tasks: Task[], action: TaskAction): Task[] {
           done: action.done,
         },
       ];
-
     case 'CHANGE':
       return tasks.map((t) => {
         if (t.id === action.task.id) {
@@ -27,8 +26,7 @@ export function taskReducer(tasks: Task[], action: TaskAction): Task[] {
       });
     case 'DELETE':
       return tasks.filter((task) => task.id !== action.id);
-
     default:
-      break;
+      throw new Error('Unknown action');
   }
 }

@@ -1,16 +1,17 @@
-import type { Topic } from './types/topic';
+import type { Topic } from '../types/topic';
 
 type NavProps = {
   topics: Topic[];
 };
 
+// <li><a href={"/read"}>title</a></li>
 function Nav({ topics }: NavProps) {
   return (
     <nav>
       <ol>
         {topics.map((topic) => (
           <li>
-            <a href="{/read/${topic.id}}">{topic.title}</a>
+            <a href={`/read/${topic.id}`}>{topic.title}</a>
           </li>
         ))}
       </ol>

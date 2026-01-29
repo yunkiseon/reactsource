@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import MyButton from './MyButton';
 // 2 개의 버튼 다른 스타일 지정 후 자식에게 전달
-// 태그 안에 쓰면 child, 옆에 쓰면 props로 전달 가능
 export default function MyBtn() {
   const btn1 = {
     padding: '16px',
     background: 'red',
   };
+
   const btn2 = {
     padding: '16px',
     background: 'gray',
@@ -17,7 +17,7 @@ export default function MyBtn() {
 
   return (
     <>
-      <div className="mt-5">
+      <div className="m-5">
         <h1 className="text-3xl">Counters that update separately</h1>
         <MyButton style={btn1} count={count} onClick={onClick} />
         <MyButton style={btn2} count={count} onClick={onClick} />

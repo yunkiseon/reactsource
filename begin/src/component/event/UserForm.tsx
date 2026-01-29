@@ -1,26 +1,27 @@
 import { useState } from 'react';
 
+const initUser = {
+  username: '',
+  isSubscribed: false,
+  role: 'user',
+};
+
 function UserForm() {
-  const initUser = {
-    username: '',
-    isSubscribed: false,
-    role: 'user',
-  };
   const roles = ['user', 'admin', 'guest'];
-  // 관리할 거리 name, role, suibscribe 개별 or 통합
+
+  // name, role, subscribe => 상태관리 => 개별 or 통합
   const [formData, setFormData] = useState(initUser);
   const { username, isSubscribed, role } = formData;
-  // name, role, subscribe 변화 감지 함수
+
+  // name, role, subscribe 요소에 변화가 일어나는 것 감지 함수
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
-    // e.target의 content 모두 가져와서 분해정의 가능
     const target = e.target;
     const { name } = target;
 
     const nextForm = {
       ...formData,
-      //   [e.target.name]: e.target.value, 원래는 이렇게 해야하지만 분해했기에
       [name]:
         target instanceof HTMLInputElement && target.type === 'checkbox'
           ? target.checked
@@ -33,12 +34,12 @@ function UserForm() {
     <>
       <div className="mt-10 flex justify-center">
         <div className="w-full max-w-2xl space-y-6 rounded-lg bg-white p-6 shadow-md">
-          <h2 className="text-center text-2xl font-semibold">User</h2>
+          <h2 className="text-center text-2xl font-semibold">USER</h2>
           <form action="">
             <div>
-              Name: {username} {isSubscribed && '(Subscribe)'}
+              Name : {username} {isSubscribed && ' (Subscribed) '}
             </div>
-            <div>Role: {role}</div>
+            <div>Role : {role}</div>
             <div>
               <input
                 type="text"

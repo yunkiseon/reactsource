@@ -7,6 +7,9 @@ const initialState = {
   number: 0,
 };
 
+export const increase = () => ({ type: INCREASE });
+export const decrease = () => ({ type: DECREASE });
+
 export const counter = (state = initialState, action: CounterAction) => {
   switch (action.type) {
     case INCREASE:
@@ -17,7 +20,6 @@ export const counter = (state = initialState, action: CounterAction) => {
       return {
         number: state.number - 1,
       };
-
     default:
       return state;
   }
