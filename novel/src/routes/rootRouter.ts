@@ -1,6 +1,8 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Home from '../components/novels/Home';
-import { novelRouter } from './novelRouter';
+import { createBrowserRouter } from "react-router-dom";
+import Home from "../components/novels/Home";
+import { novelRouter } from "./novelRouter";
+import { userRouter } from "./userRouter";
+import UserPage from "../pages/users/UserPage";
 
 // http://localhost:5173/ => Home
 // http://localhost:5173/novels/add => Add
@@ -9,12 +11,17 @@ import { novelRouter } from './novelRouter';
 
 const rootRouter = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     Component: Home,
   },
   {
-    path: '/novels',
+    path: "/novels",
     children: novelRouter(),
+  },
+  {
+    path: "/member",
+    Component: UserPage,
+    children: userRouter(),
   },
 ]);
 
