@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import type { Novel, NovelPut, PageRequestDTO } from "../types/book";
+import jwtAxios from "../utils/jwtUtil";
 
 export const API_SERVER_HOST = "http://localhost:8080/api/novels";
 
@@ -27,25 +28,25 @@ export const getRow = async (id: string) => {
 // 업데이트 2
 
 export const putAvailable = async (novelObj: NovelPut) => {
-  const result = await axios.put(`${API_SERVER_HOST}/available/${novelObj.id}`, novelObj);
+  const result = await jwtAxios.put(`${API_SERVER_HOST}/available/${novelObj.id}`, novelObj);
   return result.data;
 };
 
 // 이용가능 여부/ 장르변경
 
 export const putNovel = async (novelObj: NovelPut) => {
-  const result = await axios.put(`${API_SERVER_HOST}/edit/${novelObj.id}`, novelObj);
+  const result = await jwtAxios.put(`${API_SERVER_HOST}/edit/${novelObj.id}`, novelObj);
   return result.data;
 };
 
 // 삭제
 export const deleteOne = async (id: number) => {
-  const result = await axios.delete(`${API_SERVER_HOST}/${id}`);
+  const result = await jwtAxios.delete(`${API_SERVER_HOST}/${id}`);
   return result.data;
 };
 
 // 삽입
 export const postNovel = async (novelObj: Novel) => {
-  const result = await axios.post(`${API_SERVER_HOST}/add`, novelObj);
+  const result = await jwtAxios.post(`${API_SERVER_HOST}/add`, novelObj);
   return result.data;
 };

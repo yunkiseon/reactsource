@@ -4,9 +4,11 @@ import BookForm from "../../components/novels/NovelForm";
 import BasicLayout from "../../layouts/BasicLayout";
 import { initialNovel, type Novel } from "../../types/book";
 import { postNovel } from "../../apis/novelApis";
+import useLogin from "../../hooks/useLogin";
 
 const AddNovel = () => {
   const navigate = useNavigate();
+  const { isLogin } = useLogin();
 
   const handleCancel = (id: number) => {
     navigate(`../${id}`);
@@ -20,6 +22,8 @@ const AddNovel = () => {
       console.log(error);
     }
   };
+
+  if (!isLogin) navigate("/member/login");
   return (
     <BasicLayout>
       <h1 className="text-[32px]">Add New Book</h1>

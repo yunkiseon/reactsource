@@ -7,11 +7,14 @@ import Error from "../../components/common/Error";
 import NovelDetail from "../../components/novels/NovelDetail";
 import type { Novel } from "../../types/book";
 import { putNovel } from "../../apis/novelApis";
+import useLogin from "../../hooks/useLogin";
 
 const EditNovel = () => {
   const navigate = useNavigate();
   // id 가져오기
   const { id } = useParams<{ id: string }>();
+
+  const { isLogin } = useLogin();
 
   // 서버로 novel 요청
   const { serverData, loading, error } = useNovel(id!);
@@ -31,8 +34,9 @@ const EditNovel = () => {
     }
   };
 
-  if (loading) return <Loading />;
-  if (error || !serverData) return <Error />;
+  // 로그인 여부확인?
+  if (!isLogin) navigate("/member/login");
+  if (error) navigate("/");
 
   return (
     <BasicLayout>

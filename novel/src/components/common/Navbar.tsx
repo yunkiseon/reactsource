@@ -2,12 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import type { RootState } from "../../reducers/store";
 import { logout } from "../../reducers/loginSlice";
+import useLogin from "../../hooks/useLogin";
 
 const NavBar = () => {
-  const authState = useSelector((state: RootState) => state.auth);
-  const dispatch = useDispatch();
+  const { authState, doLogout, moveToPate } = useLogin();
   const logoutState = () => {
-    dispatch(logout());
+    doLogout();
+    alert("로그아웃되었습니다.");
+    moveToPate("/");
   };
   return (
     <nav className="flex h-14 items-center justify-between bg-sky-600 px-5 text-white">
@@ -18,7 +20,7 @@ const NavBar = () => {
             Home
           </Link>
         </li>
-        {authState.email ? (
+        {authState?.email ? (
           <>
             <li>
               <Link to="/novels/add" className="underline-offset-1 hover:underline">
